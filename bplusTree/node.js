@@ -13,12 +13,10 @@ class Node{
    }
 
    // only if the node is a leaf node
-   addKeyAddress(key, address){
-       if(this.isLeaf == true){
-          this.keys.push(key);
-          this.children.push(address);
-       }
-       else console.log('Attempting to add address to non leaf node');
+   addKeyFilename(key, address){
+       // if internal, traverse down through children
+       // else insert in the appropriate place(practically will be last index)
+       // and handle splitting
    }
 
    // search for key
