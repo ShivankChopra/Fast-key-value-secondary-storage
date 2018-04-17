@@ -30,7 +30,7 @@ class KeyStore{
        // 2. Load file with obtained filename (set 1000 records per file)
        // let fileData = JSON.parse(fs.readFileSync('../data/files/filename.txt'));
 
-       // 3. Find and return desired record
+       // 3. Find and return desired record using sorting algo
    }
 
    // save a value

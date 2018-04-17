@@ -1,0 +1,2 @@
+# ignore data folder, contains huge number of records
+data/
