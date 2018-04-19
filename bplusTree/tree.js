@@ -13,9 +13,8 @@ const TreeUtil = require('../treeUtil');
     }
 
     // returns filename containing record corresponding to key 
-    search(node = this.root, key){
-
-        if(node.isLeaf == true){
+    search(key, node = this.root){
+        if(node.isLeaf == true){            
             let filePos = TreeUtil.binarySearch(node.keys, key);
             if(filePos == -1){
                 return {
@@ -32,7 +31,7 @@ const TreeUtil = require('../treeUtil');
         }
         else{
             let index = TreeUtil.getRouteIndex(node.keys, key);
-            return this.search(node.children[index], key);
+            return this.search(key, node.children[index]);
         }
     }
 

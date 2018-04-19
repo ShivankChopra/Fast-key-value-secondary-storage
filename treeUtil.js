@@ -19,7 +19,7 @@ class TreeUtil{
         let mid = Math.floor((start + end)/2);
         let found = false;
 
-        while(start < end){
+        while(start <= end){
             if(data == arr[mid]){
                 found = true;
                 break;
