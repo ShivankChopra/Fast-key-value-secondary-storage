@@ -5,7 +5,7 @@ const Tree = require('../bplusTree/tree');
  */
 class KeyStore{
    constructor(){
-      this.index = new Tree();
+      this.index = new Tree(101);
       this.metadata = null;
       this.initialize();
    }

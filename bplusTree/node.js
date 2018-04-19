@@ -3,30 +3,22 @@
  */
 
 class Node{
-   constructor(order, parent){
-       this.order = order;
-       this.parent = parent;
+   constructor(){
+       this.parent = null;
        this.keys = [];
        this.children = [];
        this.isLeaf = true; // node is leaf by deafault
-       this.isInternal = false;
+       this.nextNode = null;
+       this.prevNode = null;
    }
 
-   // only if the node is a leaf node
-   addKeyFilename(key, address){
-       // if internal, traverse down through children
-       // else insert in the appropriate place(practically will be last index)
-       // and handle splitting
-   }
+   insertKey(key){
+      let i = this.keys.length - 1;
+      while(key < this.keys[i] && i>=0){
+          i--;
+      }
 
-   // search for key
-   search(key){
-       // to do
-   }
-
-   // split node when number of keys exceed order
-   static splitNode(node){
-       // to do
+      this.keys.splice(i+1, 0, key);
    }
 }
 
