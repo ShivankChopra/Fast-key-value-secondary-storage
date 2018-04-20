@@ -33,7 +33,7 @@ for(let i = fileIndex; i <= TARGET + metadata.lastRecordId + 1; i++){
         fs.writeFileSync(filePath, JSON.stringify(file));
         file = [];
 
-        // set new fileindex
+        // set new file index
         fileIndex = i;
         index.push({
             'key': i,

@@ -40,32 +40,56 @@ class KeyStore{
        }
    }
 
-   // save a value
+   // save a value and return new generated key
    insert(value){
-       // 1. get last record id from metadata and generate key(implementing auto increment ids)
-       // let key = this.metadata.lastrecordId + 1;
+       // get last record id from metadata and generate key(implementing auto increment ids)
+       let key = this.metadata.lastRecordId + 1;
 
-       // 2. If key is multiple of 1000(every 1000th record must be saved in a new file)
-       // fs.writeFileSync('newFileName', 'key-value pair');
-       // then update index entry
-       // this.index.insert(key, newFileName);
+       let filename = '';
 
-       // 2. (alt) If key isn't multiple of 1000, query index to find desired filename 
-       // and append entry
-       // let filename = this.index.search(key);
-       // fs.appendFileSync('../data/files/filename.txt', key-value-data);
+       let newRecord = {
+        'key' : key,
+        'value': value
+       }
+
+       // create new file
+       if((key-1) % 1000 == 0){
+          filename = 'File_' + key + '.txt';
+          let fileContents = [];
+          fileContents.push(newRecord);
+          fs.writeFileSync('./data/files/' + filename, JSON.stringify(fileContents));
+
+          // update index
+          this.index.insert({
+              'key': key,
+              'value': filename
+          });
+       }
+       else{
+          filename = this.get(key);
+
+          fileContents = JSON.parse(fs.readFileSync('./data/files/' + filename));
+          fileContents.push(newRecord);
+          fs.writeFileSync('./data/files/' + filename, JSON.stringify(fileContents));
+       }
+
+       // update metadata
+       this.metadata.lastRecordId = key;
+       this.metadata.lastFileName = filename;
+
+       return key;
    }
 
    //save updated index
    saveIndexAndMetadata(){
-       // 1. Save metadata
-       // fs.writeFileSync('../data/metadata.txt', JSON.stringify(metadata));
+       // Save metadata
+       fs.writeFileSync('./data/metadata.txt', JSON.stringify(this.metadata));
 
-       // 2. Do leave traversal and fill an indices array
-       // let indices = this.index.saveIndices();
+       // get indices
+       let indices = this.index.saveIndices();
 
-       // 3. Save indices array to index file
-       // fs.writeFileSync('../data/index.txt', JSON.stringify(indices));
+       // Save indices array to index file
+       fs.writeFileSync('./data/index.txt', JSON.stringify(indices));
    } 
 }
 
