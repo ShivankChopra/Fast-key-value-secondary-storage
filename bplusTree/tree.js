@@ -118,13 +118,35 @@ const TreeUtil = require('../treeUtil');
 
     // build tree from index
     populateTree(indices){
-         // to do
+         indices.forEach(index => this.insert(index));
     }
 
     // save indices to array by leave traversal
     saveIndices(){
-         // do leave traversal and add key-address pairs to indices array
-         // then return updated indices array
+         let indices = [];
+
+         let node = this.root;
+         while(!node.isLeaf){
+             node = node.children[0];
+         }
+
+         while(node !== null){
+            let arr = [];
+            
+            for(let i = 0; i < node.keys.length; i++){
+                let data = {
+                    'key' : node.keys[i],
+                    'value': node.children[i]
+                }
+
+                arr.push(data);
+            }
+
+            indices.push(...arr);
+            node = node.nextNode;
+         }        
+
+         return indices;
     }
  }
 
