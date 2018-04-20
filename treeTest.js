@@ -17,9 +17,9 @@ let time = Date.now();
 tree.populateTree(indices);
 console.log("Tree built in " + (Date.now()-time)/1000 + ' seconds');
 
-//time = Date.now();
-//console.log(tree.search(467000));
-//console.log("Found in " + (Date.now()-time)/1000 + ' seconds');
+time = Date.now();
+console.log(tree.search(467000));
+console.log("Found in " + (Date.now()-time)/1000 + ' seconds');
 
-let res = tree.saveIndices();
-console.log(res);
+//let res = tree.saveIndices();
+//console.log(res);

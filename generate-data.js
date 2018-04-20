@@ -26,7 +26,7 @@ function randomString(){
 
 /* generate target number of files */
 for(let i = fileIndex; i <= TARGET + metadata.lastRecordId + 1; i++){
-    let filePath = './data/files/' + fileIndex + '.txt';
+    let filePath = './data/files/File_' + fileIndex + '.txt';
     
     if((i-1)%1000 === 0){ 
         // save cached records
@@ -35,7 +35,10 @@ for(let i = fileIndex; i <= TARGET + metadata.lastRecordId + 1; i++){
 
         // set new fileindex
         fileIndex = i;
-        index.push(i);
+        index.push({
+            'key': i,
+            'value': 'File_' + i + '.txt'
+        });
     }    
     
     let data = {

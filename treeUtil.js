@@ -20,14 +20,14 @@ class TreeUtil{
         let found = false;
 
         while(start <= end){
-            if(data == arr[mid]){
+            if(data == arr[mid].key){
                 found = true;
                 break;
             }
-            else if(data > arr[mid]){
+            else if(data > arr[mid].key){
                 start = mid + 1;
             }
-            else if(data < arr[mid]){
+            else if(data < arr[mid].key){
                 end = mid - 1;
             }
 
