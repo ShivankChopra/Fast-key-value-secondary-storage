@@ -66,9 +66,10 @@ class KeyStore{
           });
        }
        else{
-          filename = this.get(key);
+          filename = this.index.search(key).data;
+          console.log(filename)
 
-          fileContents = JSON.parse(fs.readFileSync('./data/files/' + filename));
+          let fileContents = JSON.parse(fs.readFileSync('./data/files/' + filename));
           fileContents.push(newRecord);
           fs.writeFileSync('./data/files/' + filename, JSON.stringify(fileContents));
        }

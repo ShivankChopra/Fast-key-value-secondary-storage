@@ -1,3 +1,5 @@
+// simple scroipt for generating random values for testing
+
 const fs = require('fs');
 
 const TARGET = 2000000;
