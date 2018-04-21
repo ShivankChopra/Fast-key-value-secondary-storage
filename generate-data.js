@@ -1,4 +1,4 @@
-// simple scroipt for generating random values for testing
+// simple script for generating random values for testing
 
 const fs = require('fs');
 

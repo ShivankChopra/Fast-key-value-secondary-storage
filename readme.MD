@@ -2,9 +2,10 @@
 A fast key value storage application using B+ tree indexing in nodejs.
 
 ## Benchmarks
-DB containing 16,000,000 records
+DB containing 130,000,000 records (~10 GB)
+- Index loaded in 0.432 sec
 - Single read operation 0.001 sec
-- Single write operation 0.002 sec
+- Single write operation 0.003 sec
 
 ## Working
 ### Organizing data

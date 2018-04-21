@@ -7,7 +7,7 @@ console.log("Index built in " + (Date.now() - time)/1000 + " seconds");
 
 // insert value
 time = Date.now();
-let key = keyStore.insert('This works');
+let key = keyStore.insert('This works ' + Date.now());
 console.log("Data inserted in " + (Date.now() - time)/1000 + " seconds");
 
 // read inserted data

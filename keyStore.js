@@ -14,13 +14,13 @@ class KeyStore{
 
    // build b+ index tree and metadata
    initialize(){
-       // 1. load metadata from metadata.txt
+       // load metadata from metadata.txt
        this.metadata = JSON.parse(fs.readFileSync('./data/metadata.txt'));
 
-       // 2. load indices from index.txt
+       // load indices from index.txt
        let indices = JSON.parse(fs.readFileSync('./data/index.txt'));
 
-       // 3. pass indices array to this.index populateTree method
+       // pass indices array to this.index populateTree method
        this.index.populateTree(indices);
    }
 
@@ -67,7 +67,6 @@ class KeyStore{
        }
        else{
           filename = this.index.search(key).data;
-          console.log(filename)
 
           let fileContents = JSON.parse(fs.readFileSync('./data/files/' + filename));
           fileContents.push(newRecord);
